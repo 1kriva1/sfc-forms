@@ -1,14 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ContentChild, AfterContentInit, HostBinding } from '@angular/core';
+import { InputRefDirective } from '../common/input-ref.directive';
  
 @Component({
     selector: 'sfc-text-input',
     templateUrl: './sfc-text-input.component.html',
     styleUrls: ['./sfc-text-input.component.css']
 })
-export class TextInputComponent implements OnInit{
+export class TextInputComponent implements OnInit, AfterContentInit{
+    
 
     @Input()
     icon:string;
+
+    @ContentChild(InputRefDirective, {static:false})
+    input:InputRefDirective;
 
     constructor(){
 
@@ -17,6 +22,15 @@ export class TextInputComponent implements OnInit{
     ngOnInit(): void {
         
     } 
+
+    ngAfterContentInit(): void {
+        console.log('input is: ' + this.input);
+    }
+
+    @HostBinding('class.input-focus')
+    get isInputFocus(){
+        return this.input ? this.input.isOnFocus : false;
+    }
 
     get classes(){
         const classes = {}
