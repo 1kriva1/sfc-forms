@@ -30,7 +30,7 @@
         "@types/jasmine": "^2.8.8",
         "@ngtools/webpack": "~7.3",
         "typescript": "3.4.5",
-        "webpack": "4.33.0",
+        "webpack": "5.94.0",
         "webpack-cli": "3.3.0",
         "webpack-dev-server": "3.6.0",
         "webpack-merge": "~4.2",
